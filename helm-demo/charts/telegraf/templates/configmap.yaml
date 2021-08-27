@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "telegraf.fullname" . }}
+  labels:
+    {{- include "telegraf.labels" . | nindent 4 }}
+data:
+  telegraf.conf: |+
+    [global_tags]
+{{ .Values.config.tags | indent 6 }}
+    [agent]
+{{ .Values.config.agent | indent 6 }}
+    [[outputs.influxdb]]
+{{ .Values.config.outputs_influxdb | indent 6 }}
+    [[inputs.amqp_consumer]]
+{{ .Values.config.inputs_amqp_consumer | indent 6 }}

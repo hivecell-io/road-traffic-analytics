@@ -1,0 +1,57 @@
+# Default values for thingsboard.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: eu.gcr.io/hivecell/helm-demo/rtsptohls-armv8
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: latest
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+readinessProbe:
+  enabled: true
+  initialDelaySeconds: 40
+  periodSeconds: 7
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+command:
+  resolv: 
+    echo nameserver 10.96.0.10 > /etc/resolv.conf;
+    echo search default.svc.cluster.local svc.cluster.local cluster.local localdomain  >> /etc/resolv.conf;
+    echo options ndots:5 >> /etc/resolv.conf;
+  cmd: "go run *.go"
+service:
+  type: NodePort
+  port: 8083
+  nodePort: 31010
+
+resources: {}
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+
+tolerations: []
+
+affinity: {}
+
+hostnetwork:
+  enable: false
+
+livenessProbe:
+   initialDelaySeconds: 30
+   periodSeconds: 10
+  
+nodeSelector: {}
