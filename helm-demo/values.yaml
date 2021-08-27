@@ -1,0 +1,17 @@
+grafana:
+  enabled: true
+
+influxdb:
+  enabled: true
+
+rabbitmq-ha:
+  enabled: true
+
+video-analytics-demo:
+  enabled: true
+
+telegraf:
+  enabled: true
+
+video-stream-service:
+  enabled: true

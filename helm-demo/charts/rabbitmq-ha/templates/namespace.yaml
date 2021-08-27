@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: monitoring
+  labels:
+    app: {{ template "rabbitmq-ha.name" . }}
+    chart: {{ template "rabbitmq-ha.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
