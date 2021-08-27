@@ -2,12 +2,10 @@
 
 Road Traffic Analytics - application that analyze vehicle traffic situation using NVIDIA DeepStream SDK. This toolkit detecting vehicles using object detection model Restnet10 as a primary model, then send detected objects to secondary model Resnet18 to detect vehicle types. Each detection generates a message that stored in InfluxDB using RebbitMQ as a message broker and Telegraf as a data collector and a transformer. RTSP video stream with vehicle detections is a second output from Deepstream. It's available on a Grafana dashboard with analytics charts based on stored data in InfluxDB.
 
-The Road Traffic Analytics Helm chart uses the [Helm](https://helm.sh) package manager to bootstrap a Road Traffic Analytics (`helm-demo`) deployment on a [Kubernetes](http://kubernetes.io) cluster.
-
-
 # Introduction
 
-This Helm chart installs road traffic analytics application in a Kubernetes cluster.
+This Helm chart installs road traffic analytics application in a Kubernetes cluster.\
+The Road Traffic Analytics Helm chart uses the [Helm](https://helm.sh) package manager to bootstrap a Road Traffic Analytics (`helm-demo`) deployment on a [Kubernetes](http://kubernetes.io) cluster.
 
 # Prerequisites
 
@@ -69,11 +67,11 @@ The /charts directory includes all the helm charts needed to run the demo app. I
     ```
 # Automatic installation the chart
 
-1. Download `*.tgz` file with Road Traffic Analytics application
+1. Download `*.tgz` file with Road Traffic Analytics application in Releases
 
 2. Use `Hive Control` UI
 
-3. Download `*.tgz` file on `Hive Control` UI and deploy application
+3. Upload `*.tgz` file on `Hive Control` UI and deploy application
 
 # Uninstall the chart
 
