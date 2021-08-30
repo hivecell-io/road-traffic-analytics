@@ -95,12 +95,6 @@ spec:
       port: 15675
       targetPort: mqtt-ws
     {{- end }}
-    {{ if .Values.prometheus.exporter.enabled }}
-    - name: exporter
-      protocol: TCP
-      port: {{ .Values.prometheus.exporter.port }}
-      targetPort: exporter
-    {{ end }}
     {{- if .Values.rabbitmqPrometheusPlugin.enabled }}
     - name: metrics
       protocol: TCP

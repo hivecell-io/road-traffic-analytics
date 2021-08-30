@@ -42,15 +42,6 @@ spec:
         {{- if not .Values.existingSecret }}
         checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
         {{- end }}
-        {{- if and .Values.prometheus.exporter.enabled (not .Values.prometheus.operator.enabled) }}
-        prometheus.io/scrape: "true"
-        prometheus.io/port: {{ .Values.prometheus.exporter.port | quote }}
-        {{- end }}
-        {{- if and .Values.rabbitmqPrometheusPlugin.enabled (not .Values.prometheus.operator.enabled) }}
-        prometheus.io/scrape: "true"
-        prometheus.io/port: {{ .Values.rabbitmqPrometheusPlugin.port | quote }}
-        prometheus.io/path: {{ .Values.rabbitmqPrometheusPlugin.path | quote }}
-        {{- end }}
 {{- if .Values.podAnnotations }}
 {{ toYaml .Values.podAnnotations | indent 8 }}
 {{- end }}
@@ -226,38 +217,6 @@ spec:
             {{- if .Values.extraVolumeMounts }}
 {{ toYaml .Values.extraVolumeMounts | indent 12 }}
             {{- end }}
-        {{ if .Values.prometheus.exporter.enabled }}
-        - name: {{ .Chart.Name }}-exporter
-          image: {{ .Values.prometheus.exporter.image.repository }}:{{ .Values.prometheus.exporter.image.tag }}
-          imagePullPolicy: {{ .Values.prometheus.exporter.image.pullPolicy }}
-          ports:
-          - name: exporter
-            protocol: TCP
-            containerPort: {{ .Values.prometheus.exporter.port }}
-          env:
-            - name: PUBLISH_PORT
-              value: "{{ .Values.prometheus.exporter.port }}"
-            {{ if .Values.prometheus.exporter.capabilities }}
-            - name: RABBIT_CAPABILITIES
-              value: "{{ .Values.prometheus.exporter.capabilities }}"
-            {{- end }}
-            - name: RABBIT_USER
-              valueFrom:
-                secretKeyRef:
-                  name: {{ template "rabbitmq-ha.secretName" . }}
-                  key: rabbitmq-username
-            - name: RABBIT_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ template "rabbitmq-ha.secretName" . }}
-                  key: rabbitmq-password
-            {{- range $key, $value := .Values.prometheus.exporter.env }}
-            - name: {{ $key }}
-              value: {{ $value | quote }}
-            {{- end }}
-          resources:
-{{ toYaml .Values.prometheus.exporter.resources | indent 12 }}
-        {{ end }}
         {{- if .Values.extraContainers }}
 {{ tpl (toYaml .Values.extraContainers) . | indent 8 }}
         {{- end }}
