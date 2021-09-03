@@ -29,8 +29,8 @@ The /charts directory includes all the helm charts needed to run the demo app. I
     - `/charts` - Directory includes all the helm charts
         - [/grafana](./charts/grafana) - Grafana is analytics & monitoring solution that we use to show metrics and online video streams on a single dashboard.
         - [/influxdb](./charts/influx) - InfluxDB is a time series database that we use to store data from the deepstream.
-        - [/rabbitmq-ha](.charts/rabbitmq-ha) - RabbitMQ is a message broker that receives data from the deepstream and sends it to the telegraf. 
-        - [/telegraf](.charts/telegraf) - This plugin gathers statistics from RabbitMQ and sends data to InfluxDB
+        - [/rabbitmq-ha](./charts/rabbitmq-ha) - RabbitMQ is a message broker that receives data from the deepstream and sends it to the telegraf. 
+        - [/telegraf](./charts/telegraf) - This plugin gathers statistics from RabbitMQ and sends data to InfluxDB
         - [/video-analytics-demo](./video-analytics-demo) - NVIDIA DeepStream SDK delivers a complete streaming analytics toolkit for AI-based multi-sensor processing, video and image understanding. We use object detection to detect vehicle and secondary models to detect type and make of a vehicle
         - [/video-stream-service](./charts/video-stream-service) - Stream service that use HLS protocol and streams the video on the dashboard in Grafana
     - `templates` - The file that gives the output after successfully installing the helm demo in the command line.
