@@ -13,5 +13,5 @@ video-analytics-demo:
 telegraf:
   enabled: true
 
-video-stream-service:
+rtsp-to-web:
   enabled: true

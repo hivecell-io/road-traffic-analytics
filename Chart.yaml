@@ -26,7 +26,7 @@ dependencies:
     version: 1.8.2
     repository: ./charts/telegraf
     condition: telegraf.enable
-  - name: video-stream-service
+  - name: rtsp-to-web
     version: 0.1.1
-    repository: ./charts/video-stream-service
-    condition: video-stream-service.enable
+    repository: ./charts/rtsp-to-web
+    condition: rtsp-to-web.enable
