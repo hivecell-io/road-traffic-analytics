@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "video-stream-service.fullname" . }}
+  name: {{ include "rtsp-to-web.fullname" . }}
   labels:
-    {{- include "video-stream-service.labels" . | nindent 4 }}
+    {{- include "rtsp-to-web.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "video-stream-service.selectorLabels" . | nindent 6 }}
+      {{- include "rtsp-to-web.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -16,7 +16,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "video-stream-service.selectorLabels" . | nindent 8 }}
+        {{- include "rtsp-to-web.selectorLabels" . | nindent 8 }}
     spec:
       hostNetwork: {{ .Values.hostnetwork.enable }}
       {{- with .Values.imagePullSecrets }}
