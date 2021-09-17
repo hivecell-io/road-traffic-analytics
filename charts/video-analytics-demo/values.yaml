@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: eu.gcr.io/hivecell/cuda-arm64v8/deepstream-l4t-cuda
-  tag: helm-demo
+  tag: demo-input
   pullPolicy: Always
 
 # Update the NGC Model to use in Deepstream 
@@ -29,6 +29,14 @@ fullnameOverride: ""
 
 command:
   apprunnercmd: "sources/apps/sample_apps/deepstream-test5/deepstream-test5-app -c sources/apps/sample_apps/deepstream-test5/configs/test5_demo.txt -p 1 -t -m 1"
+
+inputVideo:
+  default:
+     enable: true
+     source: file:///opt/nvidia/deepstream/deepstream-5.1/samples/streams/Road_traffic.mp4
+  camera:
+     enable: false
+     source:
 
 service:
   type: NodePort

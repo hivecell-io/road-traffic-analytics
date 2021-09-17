@@ -32,6 +32,13 @@ spec:
       containers:
         - name: "{{ .Chart.Name }}-1"
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          env:
+           - name: INPUT_SOURCE
+{{- if .Values.inputVideo.camera.enable }}
+             value: {{ .Values.inputVideo.camera.source }}
+{{- else if .Values.inputVideo.default.enable }}
+             value: {{ .Values.inputVideo.default.source }}
+{{- end }}
           securityContext:
             privileged: true
           command:
@@ -44,7 +51,8 @@ spec:
             {{ .Values.ngcModel.getModel }}; 
             unzip *.zip; 
             cp -r {{ .Values.ngcModel.fileName }} {{ .Values.ngcModel.putModel }}; 
-            sed -ie "s/..\/..\/models\/tlt_pretrained_models\/{{ .Values.ngcModel.name}}\/{{ .Values.ngcModel.fileName }}/\/opt\/nvidia\/deepstream\/deepstream-5.1\/samples\/configs\/tlt_pretrained_models\/{{ .Values.ngcModel.fileName }}/g" {{ .Values.ngcModel.modelConfig }}; 
+            sed -ie "s/..\/..\/models\/tlt_pretrained_models\/{{ .Values.ngcModel.name}}\/{{ .Values.ngcModel.fileName }}/\/opt\/nvidia\/deepstream\/deepstream-5.1\/samples\/configs\/tlt_pretrained_models\/{{ .Values.ngcModel.fileName }}/g" {{ .Values.ngcModel.modelConfig }};
+            sed -i "s|INPUT_SOURCE|${INPUT_SOURCE}|g"  /opt/nvidia/deepstream/deepstream-5.1/sources/apps/sample_apps/deepstream-test5/configs/test5_demo.txt; 
             {{ .Values.command.apprunnercmd}}
           {{- end }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
