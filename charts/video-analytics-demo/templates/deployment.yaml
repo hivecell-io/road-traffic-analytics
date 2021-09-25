@@ -34,10 +34,10 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           env:
            - name: INPUT_SOURCE
-{{- if .Values.inputVideo.camera.enable }}
-             value: {{ .Values.inputVideo.camera.source }}
-{{- else if .Values.inputVideo.default.enable }}
+{{- if not .Values.inputVideo.camera.source }}
              value: {{ .Values.inputVideo.default.source }}
+{{- else if }}
+             value: {{ .Values.inputVideo.camera.source }}
 {{- end }}
           securityContext:
             privileged: true
