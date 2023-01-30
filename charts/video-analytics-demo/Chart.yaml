@@ -1,5 +1,0 @@
-apiVersion: v1
-appVersion: "1.2"
-description: Deepstream Intelligent Video Analytics Helm Chart for Xavier
-name: video-analytics-demo
-version: 0.1.0
