@@ -32,8 +32,10 @@ command:
 
 inputVideo:
   default:
+     enable: true
      source: file:///opt/nvidia/deepstream/deepstream-5.1/samples/streams/Road_traffic.mp4
   camera:
+     enable: false
      source:
 
 service:

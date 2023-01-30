@@ -1,0 +1,32 @@
+apiVersion: v2
+name: helm-demo
+description: A Helm chart for Kubernetes
+type: application
+version: 2.2.1
+appVersion: 1.16.0
+
+dependencies:
+- condition: grafana.enable
+  name: grafana
+  repository: ./charts/grafana
+  version: 1.17.6
+- condition: influxdb.enable
+  name: influxdb
+  repository: ./charts/influxdb
+  version: 4.9.14
+- condition: rabbimq-ha.enable
+  name: rabbitmq-ha
+  repository: ./charts/rabbitmq-ha
+  version: 1.47.0
+- condition: video-analytics-demo.enable
+  name: video-analytics-demo
+  repository: ./charts/deepstream
+  version: 0.1.0
+- condition: telegraf.enable
+  name: telegraf
+  repository: ./charts/telegraf
+  version: 1.8.2
+- condition: rtsp-to-web.enable
+  name: rtsp-to-web
+  repository: ./charts/rtsp-to-web
+  version: 0.1.1

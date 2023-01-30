@@ -121,7 +121,7 @@ spec:
 {{ toYaml .Values.volumes | indent 6 }}
       {{- end }}
   # Must use volume claim template in enterprise mode
-  {{- if and .Values.persistence.enabled (or (not .Values.persistence.existingClaim)) }}
+  {{- if and .Values.persistence.enabled }}
   volumeClaimTemplates:
     - metadata:
         name: {{ include "influxdb.fullname" . }}-data
@@ -142,4 +142,8 @@ spec:
         storageClassName: "{{ .Values.persistence.storageClass }}"
       {{- end }}
       {{- end }}
-  {{- end }}
+{{- else }}
+      - name: data
+        emptyDir: {}
+{{- end }}
+

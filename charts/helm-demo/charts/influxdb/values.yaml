@@ -42,7 +42,7 @@ service:
 persistence:
   enabled: true
   ## If set to "-", storageClassName: "", which disables dynamic provisioning
-  storageClass: "ceph-rbd"
+ # storageClass: "ceph-rbd"
   annotations:
   accessMode: ReadWriteOnce
   size: 8Gi

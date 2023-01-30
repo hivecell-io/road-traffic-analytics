@@ -1,6 +1,5 @@
 appVersion: 5.3.2
 description: The leading tool for querying and visualizing time series and metrics.
-engine: gotpl
 home: https://grafana.net
 icon: https://raw.githubusercontent.com/grafana/grafana/master/public/img/logo_transparent_400x.png
 kubeVersion: ^1.8.0-0
