@@ -151,7 +151,7 @@ datasources:
     datasources:
     - name: InfluxDB
       type: influxdb
-      url: http://helm-demo-influxdb:8086
+      url: http://road-traffic-influxdb:8086
       user: admin
       access: proxy
       isDefault: true
@@ -1086,6 +1086,8 @@ grafana.ini:
     url: https://grafana.net
   security:
     allow_embedding: true
+  dashboards:
+    default_home_dashboard_path: /var/lib/grafana/dashboards/default/influxdb.json
 ## LDAP Authentication can be enabled with the following values on grafana.ini
 ## NOTE: Grafana will fail to start if the value for ldap.toml is invalid
   # auth.ldap:

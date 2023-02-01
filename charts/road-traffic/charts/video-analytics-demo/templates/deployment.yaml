@@ -53,6 +53,7 @@ spec:
             cp -r {{ .Values.ngcModel.fileName }} {{ .Values.ngcModel.putModel }}; 
             sed -ie "s/..\/..\/models\/tlt_pretrained_models\/{{ .Values.ngcModel.name}}\/{{ .Values.ngcModel.fileName }}/\/opt\/nvidia\/deepstream\/deepstream-5.1\/samples\/configs\/tlt_pretrained_models\/{{ .Values.ngcModel.fileName }}/g" {{ .Values.ngcModel.modelConfig }};
             sed -i "s|INPUT_SOURCE|${INPUT_SOURCE}|g"  /opt/nvidia/deepstream/deepstream-5.1/sources/apps/sample_apps/deepstream-test5/configs/test5_demo.txt; 
+            sed -i "s|helm-demo|road-traffic|g"  /opt/nvidia/deepstream/deepstream-5.1/sources/apps/sample_apps/deepstream-test5/configs/cfg_amqp.txt; 
             {{ .Values.command.apprunnercmd}}
           {{- end }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}

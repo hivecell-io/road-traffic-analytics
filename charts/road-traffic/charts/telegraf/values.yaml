@@ -139,13 +139,13 @@ config:
       flush_interval = "1s"
       flush_jitter = "0s"
     outputs_influxdb:
-      urls = ["http://helm-demo-influxdb.default.svc.cluster.local:8086"]
+      urls = ["http://road-traffic-influxdb.default.svc.cluster.local:8086"]
       database = "grafana"
       username = "admin"
       password = ""
       skip_database_creation = true
     inputs_amqp_consumer:
-      brokers = ["amqp://helm-demo-rabbitmq-ha-discovery.default.svc.cluster.local:5672/"]
+      brokers = ["amqp://road-traffic-rabbitmq-ha-discovery.default.svc.cluster.local:5672/"]
       exchange = "amq.topic"
       queue = "deepstream"
       username = "guest"
@@ -193,4 +193,4 @@ startupProbe:
    failureThreshold: 2
 
 initContainers:
- command: "sleep 50; until nslookup helm-demo-rabbitmq-ha-discovery.default.svc.cluster.local; do echo waiting for rabbitmq; sleep 50; done"
+ command: "sleep 50; until nslookup road-traffic-rabbitmq-ha-discovery.default.svc.cluster.local; do echo waiting for rabbitmq; sleep 50; done"

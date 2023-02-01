@@ -84,4 +84,4 @@ tolerations: []
 affinity: {}
 
 initContainers:
- command: "sleep 50; until nslookup helm-demo-rabbitmq-ha-discovery.default.svc.cluster.local; do echo waiting for rabbitmq; sleep 50; done"
+ command: "sleep 50; until nslookup road-traffic-rabbitmq-ha-discovery.default.svc.cluster.local; do echo waiting for rabbitmq; sleep 50; done"
