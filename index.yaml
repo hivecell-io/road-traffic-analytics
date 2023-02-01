@@ -3,7 +3,7 @@ entries:
   road-traffic:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-02-01T19:39:02.264036+02:00"
+    created: "2023-02-01T19:48:08.579256+02:00"
     dependencies:
     - condition: grafana.enable
       name: grafana
@@ -36,4 +36,4 @@ entries:
     urls:
     - road-traffic-2.2.1.tgz
     version: 2.2.1
-generated: "2023-02-01T19:39:02.252891+02:00"
+generated: "2023-02-01T19:48:08.571329+02:00"
