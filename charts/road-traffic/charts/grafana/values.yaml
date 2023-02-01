@@ -1087,7 +1087,7 @@ grafana.ini:
   security:
     allow_embedding: true
   dashboards:
-    default_home_dashboard_path: /var/lib/grafana/dashboards/default/influxdb.json
+    default_home_dashboard_path: /root/grafana1/dashboards/default/influxdb.json
 ## LDAP Authentication can be enabled with the following values on grafana.ini
 ## NOTE: Grafana will fail to start if the value for ldap.toml is invalid
   # auth.ldap:
