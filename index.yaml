@@ -3,7 +3,7 @@ entries:
   road-traffic:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-02-01T19:48:08.579256+02:00"
+    created: "2023-02-01T20:09:26.633919+02:00"
     dependencies:
     - condition: grafana.enable
       name: grafana
@@ -30,10 +30,10 @@ entries:
       repository: ./charts/rtsp-to-web
       version: 0.1.1
     description: A Helm chart for Kubernetes
-    digest: b108d7af9965ea79ea5dc07069b01b0b84fe26875a7b44819077ab090b2ac588
+    digest: ed0f5d388776ddf5fbf56ba58a4023d9632fbda274e80be8c879fdada7dfbd6a
     name: road-traffic
     type: application
     urls:
     - road-traffic-2.2.1.tgz
     version: 2.2.1
-generated: "2023-02-01T19:48:08.571329+02:00"
+generated: "2023-02-01T20:09:26.622603+02:00"
