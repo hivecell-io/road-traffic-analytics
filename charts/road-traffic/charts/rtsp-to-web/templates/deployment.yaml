@@ -29,7 +29,8 @@ spec:
           command: 
           - sh
           - -c
-          - apt update; 
+          - apt update;
+            sed -i "s|helm-demo|road-traffic|g" /go/src/app/config.json;
             {{ .Values.command.cmd}}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
