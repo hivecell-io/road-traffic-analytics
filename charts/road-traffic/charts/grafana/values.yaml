@@ -216,7 +216,7 @@ dashboards:
               },
               "id": 16,
               "options": {
-                "content": "\n<iframe src=\"http://NODE_IP:31010/player/H264_AAC\" scrolling=\"no\"\n            frameborder=\"0\" width=\"700px\" height=\"394px\" style=\"position:absolute; clip:rect(0px,720px,394px,20px); left:-10px;\"/>",
+                "content": "<script>\n   top.document.getElementById('AppFrame').setAttribute(\"src\", \"http://\" + window.location.hostname + \":31010/player/H264_AAC\");\n</script>\n<iframe id='AppFrame' src=\"http://NODE_IP:31010/player/H264_AAC\" scrolling=\"no\"\n   frameborder=\"0\" width=\"700px\" height=\"394px\" style=\"position:absolute; clip:rect(0px,720px,394px,20px); left:-10px;\"/>",
                 "mode": "html"
               },
               "pluginVersion": "8.0.5",
